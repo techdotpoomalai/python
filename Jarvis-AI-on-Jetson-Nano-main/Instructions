@@ -1,0 +1,31 @@
+Currently, the project version 0.30, has 5 main modules:
+
+JARVIS Brain
+JARVIS Things
+JARVIS Mobile
+JARVIS Amazon Alexa
+JARVIS Web
+JARVIS Brain
+NLTK and Scikit based, NLP engine written in python to classify the input speech (in the text) and process it depending on the classification. Currently, the trainer trains the engine to classify for 3 patterns:
+
+welcome greetings
+basic mathematics expression solving (+,-,*,/, square, squareroot, cube, cuberoot)
+commands to do tasks
+If the input speech result is not found out from the classified module, then it is processed for online web search using "duckduckgo" web search API.
+
+This engine is accessible via python based service build using Flask framework.
+
+JARVIS Things
+Android Things (running on RPi3) based interface and controlling unit. It takes speech input from the humans and sends the text version of it to JARVIS BRAIN for processing. Then based on the response from the Brain, it performs tasks. It can also have its inputs via sensors and can triggers tasks directly. USB mic connected takes the input speech and via Google Voice Search (added manually via old apk), converts it into text. This text is sent to Brain using Volley library. The JSON response is parsed and further processed to check what the Things have to do. If it's a command type, the respective task is performed like moving a rover, turning on the lamp, etc. Or else if it's a simple reply, using inbuilt Text-To-Speech, it is spoken out via USB speaker connected to RPi3. MQTT protocol is used for assisting JARVIS MOBILE to control the Rover and the Lamp.
+
+Rover control: Rover is based on Arduino UNO board and communicates with JARVIS THINGS via RF module. Based on the command received from Brain, different commands are transmitted to Rover to make it move forward, backwards, left, right and stop. For the demo, all commands execute for 5 seconds only.
+Lamp control: Lamp is based on ESP8266 wifi module. It is programmed to control the relay which then controls the AC appliance i.e. the LAMP. MQTT protocol is used for communication between the Thing and the Lamp.
+Location Temperature: Added in ver 0.25, speaking out "Temperature of New Delhi" will fetch the temperature for New Delhi using Open Weather Map API. If not found it will go for regular web search as fail safe option.
+JARVIS Mobile
+The Android application provides another user interface to communicate with the Brain and perform the tasks. Similar to JARVIS Things, it uses, in-built Speech-To-Text and Text-To-Speech libraries. The replies are read out aloud on the mobile device itself. However, to perform other tasks like moving the rover and other, it is dependent on JARVIS Things to perform those tasks on its behalf. MQTT is used to send instructions to the Things and the tasks are performed.
+
+JARVIS Amazon Alexa
+Basic Amazon Alexa skill which is integrated with JARVIS Brain via HTTP protocol. Jarvis skill can be invoked on Amazon Alexa supported device like Amazon Echo using the invoke term as "Jarvis". The device will use inbuilt Voice to Text and Text to Speech features and communicate with the JARVIS Brain. During testing, it was found that Voice to Text on Alexa was not that accurate as compared to Google's and this resulted in error responses from Brain. The skill is not published for world yet.
+
+JARVIS Web
+Similar to JARVIS Mobile, JARVIS Web gives another interface to interact via web platform. It uses 'webkitSpeechRecognition' for Voice to Text conversion and 'SpeechSynthesisUtterance' for Text to Speech. AJAX in simplest form is used to communicate with JARVIS Brain. JARVIS Web can do the greetings, maths calculations, fetching temperature for the location or do a web search. In future, it would be integrated with JARVIS THINGS and control other hardware using MQTT.
