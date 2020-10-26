@@ -1,4 +1,4 @@
-x1,x2,x3,x4,x5,x6,x7,x8=map(int,input("Enter your inputs:").split())
+x1,x2,x3,x4,x5,x6,x7,x8=map(complex,input("Enter your inputs:").split())
 # x1=0;x2=1;x3=2;x4=3;x5=4;x6=5;x7=6;x8=7;
 # twittle factor w8,0=1,  w8,1=0.707-0.707j,  w8,2=-j,  w8,3=0.707+0.707,   w8,4=-1
 
