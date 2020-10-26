@@ -1,6 +1,13 @@
 from os import system
 import binascii
 
+def char_list(val__):
+    str__=""
+    for c in val__:
+        str__+=c
+    return(str__)
+
+
 def string(value):
     str_=""
     for arr in value:
@@ -35,8 +42,8 @@ def Encryption():
         pass
 
 def Decryption():
-    # global_input=input("If you need single decrypt type 'yes' otherwise 'No'\n\n")
-    global_input="yes"
+    global_input=input("If you need single decrypt type 'yes' otherwise 'No'\n\n")
+    # global_input="yes"
     local_input_split=[]
     output=[]
     output_=[]
@@ -44,11 +51,10 @@ def Decryption():
     final_out_str=[]
     if global_input=="yes" or global_input=="Yes" or global_input=="YES":
         print("Note:This is ascii base decode\n")
-        # local_input=input("\nEnter decrypt word:\t")
-        local_input="0x970x98"                               #this is hex inputs tier char value a,b
+        local_input=input("\nEnter decrypt word:\t")
+        # local_input="0x970x98"                               #this is hex inputs tier char value a,b
         local_input_split=local_input.split('0x')            # split in '0x' place
         local_input_split_slice=local_input_split[1:]        # slice in first element
-        # print(local_input_split_slice)
         for loop in local_input_split_slice:
             string=loop
             x=string_convert(string)                         #call string_convert fuction
@@ -56,8 +62,8 @@ def Decryption():
         for _ in output:
             __=chr(_)
             final_out_char.append(__)
-        string(final_out_char)
-        print(final_out_char)
+        Final_output=char_list(final_out_char)              #call function
+        print("\nDecryption Now :\t",Final_output)
             
     elif global_input=="No" or global_input=="no" or global_input=="NO":
         print("\n\nThis is base 64 decryption\n\n")
@@ -70,8 +76,7 @@ def Decryption():
 system('cls')       # this is clear the screen function
 print("\nWelcome to the encription and decrption\n")
 
-# input_=input("Do you want to Encryption type in the 'Encrypt' or Decryption type 'Decrypt' \n")
-input_="decrypt"
+input_=input("Do you want to Encryption type in the 'Encrypt' or Decryption type 'Decrypt' \n")
 if input_=="encrypt" or input_=="Encrypt" or input_=="ENCRYPT":
     Encryption()        #call Encrypt function
 elif input_=="decrypt" or input_=="Decrypt" or input_=="DECRYPT":
