@@ -25,7 +25,10 @@ import binascii
 
 
 # encoding string  
-str_enc = str.encode('base64', 'strict') 
+# str_enc = str.encode('base64', 'strict') 
   
 # printing the encoded string 
-print ("The encoded string in base64 format is : ",str_enc)
+# print ("The encoded string in base64 format is : ",str_enc)
+t="5,4"
+i=int(t)
+print(type(i))
