@@ -26,6 +26,7 @@ def add_nth_term(a,d,n):
 
 system("cls")
 
+
 print("\nYou want to sequence or sequence information?")
 print("\nyou need a sequence just type 'seq' or sequence information 'seq_info'")
 Input=input("\nEnter your key word:\t")
@@ -48,8 +49,8 @@ elif Input=="seq_info":
         list_.append(ele)
     com_diff=list_[2]-list_[1]
     Nth_ele=genral_term(list_[0],com_diff,n)
-    print("\nCommon differnce of sequence d=",Nth_ele)
-    print("\nA(n)=",Nth_ele)
+    # print("\nCommon differnce of sequence d=",com_diff)
+    print("\n The N th element is A(n)=",Nth_ele)
     add_nthterm=add_nth_term(list_[0],com_diff,n)
     print("\nSum of first to n th element:\t S(n)=",add_nthterm)
 else:
